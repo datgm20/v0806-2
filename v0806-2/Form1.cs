@@ -14,6 +14,7 @@ namespace v0806_2
     {
         int vx = -10;
         int vy = -10;
+        string kao = "(・◇・)";
 
         public Form1()
         {
@@ -24,6 +25,16 @@ namespace v0806_2
         {
             label1.Left += vx;
             label1.Top += vy;
+
+            string t = label1.Text;
+            label1.Text = kao;
+            kao = t;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            vx = 0;
+            vy = 0;
         }
     }
 }
