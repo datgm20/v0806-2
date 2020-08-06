@@ -12,7 +12,7 @@ namespace v0806_2
 {
     public partial class Form1 : Form
     {
-        int vx = -10;
+        int vx = -20;
         int vy = -10;
         string kao = "(・◇・)";
 
@@ -23,19 +23,25 @@ namespace v0806_2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
             label1.Left += vx;
             label1.Top += vy;
 
             if (label1.Left < 0)
             {
-                vx = 10;
+                vx = Math.Abs(vx);
+            }
+            if (label1.Left+label1.Width > ClientSize.Width)
+            {
+                vx = -Math.Abs(vx);
             }
             if (label1.Top < 0)
             {
-                vy = 10;
+                vy = Math.Abs(vy);
             }
-
+            if (label1.Bottom > ClientSize.Height)
+            {
+                vy = -Math.Abs(vy);
+            }
 
             string t = label1.Text;
             label1.Text = kao;
@@ -50,8 +56,8 @@ namespace v0806_2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("幅" + ClientSize.Width);
-            MessageBox.Show("高さ" + ClientSize.Height);
+            //MessageBox.Show("幅" + ClientSize.Width);
+            //MessageBox.Show("高さ" + ClientSize.Height);
         }
     }
 }
